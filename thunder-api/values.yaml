@@ -1,8 +1,8 @@
 # Default values for thunder-api.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
-replicaCount: 1
+app_name: api
+replicaCount: 2
 
 image:
   repository: prinsoo/thunderstorm
@@ -98,11 +98,14 @@ tolerations: []
 
 affinity: {}
 
-env:
-  DB_PASS: "ZXhhbXBsZQ=="
-  DB_HOST: "postgresql"
-  DB_USER: "john"
-  DB: "endgame"
-
 probe:
   enable: true
+
+labels:
+  app: opk
+
+env: 
+  DB: "endgame"
+  DB_HOST: "postgres-postgresql"
+  DB_PASS: "ZXhhbXBsZQ=="
+  DB_USER: "john"

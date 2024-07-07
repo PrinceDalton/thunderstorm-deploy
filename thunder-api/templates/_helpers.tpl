@@ -47,7 +47,7 @@ Selector labels
 */}}
 {{- define "thunder-api.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "thunder-api.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/instance: {{ .Values.labels.app }}
 {{- end }}
 
 {{/*
