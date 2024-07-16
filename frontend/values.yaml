@@ -1,14 +1,14 @@
-# Default values for thunder-api.
+# Default values for frontend.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-app_name: api
-replicaCount: 2
+app_name: "frontend"
+replicaCount: 1
 
 image:
   repository: prinsoo/thunderstorm
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "backend-v1"
+  tag: "frontend-v1"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -40,9 +40,9 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 5000
   targetPort: 5000
+  type: NodePort
+  port: 6000
 
 ingress:
   enabled: false
@@ -101,11 +101,7 @@ affinity: {}
 probe:
   enable: true
 
-labels:
-  app: opk
-
 env: 
-  DB: "endgame"
-  DB_HOST: "postgresql"
-  DB_PASS: "ZXhhbXBsZQ=="
-  DB_USER: "john"
+  HOSTNAME: "redis-master"
+  REDIS_PASSWORD: "cmVkaXM="
+  REDIS_MASTER_PASSWORD: "cmVkaXM="
